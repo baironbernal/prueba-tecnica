@@ -6,7 +6,7 @@ $(document).ready(function(){
 			type: 'GET',
 			success: function(result){
 				$("#formImage").html(result);
-				alert("Esta seleccionado");
+				
 			}
 		});    
 	}

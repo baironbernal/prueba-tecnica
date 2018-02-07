@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/show', 'ImageController@showForm')->name('show');
-Route::get('/saveimage', 'ImageController@guardarImagen')->name('saveimage');
+Route::post('/saveimage', 'ImageController@guardarImagen')->name('saveimage');

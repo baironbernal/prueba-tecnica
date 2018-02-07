@@ -8,4 +8,6 @@ class Imagen extends Model
 {
     protected $table="imagenes";
     public $timestamps = false;
+
+    protected $fillable = ['id_user', 'img', 'describe'];
 }
