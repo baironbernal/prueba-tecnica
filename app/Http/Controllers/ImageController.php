@@ -6,17 +6,26 @@ use App\Input;
 use Validator;
 use Storage;
 use File;
-
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
     public function showForm()
     {
-    	return view("image.show");
+        return view("image.show");
     }
+    public function mostrarImagen(){
 
+        $user = Auth::user()->identificacion;
+        $nameimagen = Imagen::where('id_user', $user)
+            ->select('img')
+            ->get();
+        foreach ($nameimagen as $image ) {
+            echo $nameimagen;
+        }
+        //return view('image.mostrar')->with('nameimagen', $nameimagen);
+    }
     public function guardarImagen(request $request){
 
         //analizar cuantas imagenes ha subido el tipo 
@@ -29,13 +38,11 @@ class ImageController extends Controller
             return back()->withErrors($cantmax);
         }
 
-
         $validator = Validator::make($request->all(),[
             'id_user' => 'required',
             'img' => 'required|image',
             'describe' => 'required|max:55',
         ]);
-
 
         if ($validator->fails()) {
             return back()->withErrors($validator);

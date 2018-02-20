@@ -17,7 +17,7 @@ class CreateImagenesTable extends Migration
             $table->increments('id');
             $table->integer('id_user')->unsigned();
             $table->foreign('id_user')->references('identificacion')->on('users');
-            $table->binary('img');
+            $table->string('img');
             $table->string('describe');
             $table->timestamps();
         });

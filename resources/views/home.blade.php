@@ -6,7 +6,8 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                     <a href="#"><span class="label label-danger" id="update_photo">Sube tus fotos</span>
+                     <span class="label label-danger" id="update_photo">Sube tus fotos</span>
+                     <span class="label label-default" id="show_photo">Tus fotos</span>
                 </div>
                 @if($errors->all())
                         <div class="alert alert-danger">
