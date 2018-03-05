@@ -1,3 +1,4 @@
+
  <form method="POST" enctype="multipart/form-data" action="{{route('saveimage')}}">
     <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
      {{ csrf_field() }}
@@ -19,3 +20,8 @@
   	</div>
     <button type="submit" class="btn btn-default">Enviar</button>
 </form>
+
+
+<audio id="player" src="{{asset('musica.mp3')}}" type="audio/mpeg"> </audio>
+ 
+<a id="botonmusic" title="button">Reproducir Sonido</a>​

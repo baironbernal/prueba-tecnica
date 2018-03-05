@@ -16,15 +16,7 @@ class ImageController extends Controller
         return view("image.show");
     }
     public function mostrarImagen(){
-
-        $user = Auth::user()->identificacion;
-        $nameimagen = Imagen::where('id_user', $user)
-            ->select('img')
-            ->get();
-        foreach ($nameimagen as $image ) {
-            echo $nameimagen;
-        }
-        //return view('image.mostrar')->with('nameimagen', $nameimagen);
+        return view('image.mostrar');
     }
     public function guardarImagen(request $request){
 
