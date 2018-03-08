@@ -8,6 +8,12 @@
                 <div class="panel-heading">
                      <span class="label label-danger" id="update_photo">Sube tus fotos</span>
                      <span class="label label-default" id="show_photo">Tus fotos</span>
+                     <div class="col-md-8">
+                         <audio id="player" src="{{asset('musica.mp3')}}" type="audio/mpeg"> </audio>
+                         <button type="button" class="btn btn-default btn-lg">
+                          <span class="glyphicon glyphicon-play" aria-hidden="true" id="botonmusic"></span> 
+                        </button>
+                     </div>
                 </div>
                 @if($errors->all())
                         <div class="alert alert-danger">

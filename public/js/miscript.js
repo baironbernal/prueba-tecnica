@@ -1,21 +1,20 @@
 $(document).ready(function(){
 
- var playing = false;
+document.getElementById('player').play();
+playing = true;
+$("#botonmusic").removeClass("glyphicon glyphicon-play").addClass("glyphicon glyphicon-pause");
+
  $("#botonmusic").on('click',function(){
-		alert("s");
         $(this).toggleClass("down");
- 
-        if (playing == false) {
+        if (playing == true) {
+		document.getElementById('player').pause();
+		playing = false;
+		$('#botonmusic').removeClass('glyphicon glyphicon-pause').addClass('glyphicon glyphicon-play');  
+        } else {
             document.getElementById('player').play();
             playing = true;
-            $(this).text("Parar Sonido");
- 
-        } else {
-            document.getElementById('player').pause();
-            playing = false;
-            $(this).text("Reiniciar Sonido");
+			$("#botonmusic").removeClass("glyphicon glyphicon-play").addClass("glyphicon glyphicon-pause");
         }
-
  });
     
 

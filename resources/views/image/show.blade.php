@@ -1,5 +1,4 @@
-
- <form method="POST" enctype="multipart/form-data" action="{{route('saveimage')}}">
+   <form method="POST" enctype="multipart/form-data" action="{{route('saveimage')}}">
     <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
      {{ csrf_field() }}
     <input type="hidden" name="id_user" value='{{ Auth::user()->identificacion }}'>
@@ -22,6 +21,5 @@
 </form>
 
 
-<audio id="player" src="{{asset('musica.mp3')}}" type="audio/mpeg"> </audio>
- 
-<a id="botonmusic" title="button">Reproducir Sonido</a>​
+
+
