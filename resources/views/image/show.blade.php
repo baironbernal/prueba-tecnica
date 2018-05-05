@@ -1,25 +1,37 @@
-   <form method="POST" enctype="multipart/form-data" action="{{route('saveimage')}}">
-    <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-     {{ csrf_field() }}
-    <input type="hidden" name="id_user" value='{{ Auth::user()->identificacion }}'>
-    	
-     <div class="form-group">
-    	<label class="control-label col-sm-2" for="email">Fichero:</label>
-    		<div class="col-md-10">
-      			<input type="hidden" name="MAX_FILE_SIZE" value="30001" class="form-control" />
-				    <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
-				     <input name="img" type="file" accept="img/*" class="form-control" id="img" />
-    		</div>
-  	</div>
-   <div class="form-group">
-    	<label class="control-label col-sm-2" for="email">Descripcion: </label>
-    		<div class="col-md-10">
-      			<textarea class="form-control" rows="6" id="describe" placeholder="Escribe una descripcion" name="describe"></textarea>
-    		</div>
-  	</div>
-    <button type="submit" class="btn btn-default">Enviar</button>
-</form>
+@extends('layouts.app')
 
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                     <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                        <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+                        <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+                      </ul>
+                </div>
+                @if($errors->all())
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                    {{ $error }}<br/>
+                            @endforeach
+                        </div>
+                    @endif
 
-
-
+                <div class="panel-body">
+                    <div class="col-md-8" id="formImage">
+                        
+                    </div>
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

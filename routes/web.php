@@ -18,6 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/show', 'ImageController@showForm')->name('show');
-Route::post('/saveimage', 'ImageController@guardarImagen')->name('saveimage');
-Route::get('/viewphoto', 'ImageController@mostrarImagen')->name('viewphoto');
+Route::post('saveimage', 'ImageController@guardarImagen')->name('guardaimagen');
+

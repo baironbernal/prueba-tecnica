@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Imagen;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,7 +22,8 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('home');
+    {   
+        $viewimages = Imagen::all();
+        return view('home', compact("viewimages",$viewimages));
     }
 }

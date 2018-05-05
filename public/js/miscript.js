@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-document.getElementById('player').play();
+//document.getElementById('player').play();
 playing = true;
 $("#botonmusic").removeClass("glyphicon glyphicon-play").addClass("glyphicon glyphicon-pause");
 
