@@ -11,12 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('saveimage', 'ImageController@guardarImagen')->name('guardaimagen');
+Route::get('/', 'FrontPagesController@index');
 

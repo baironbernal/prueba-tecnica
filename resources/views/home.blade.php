@@ -41,13 +41,14 @@
             </div>
             <div id="menu1" class="tab-pane fade">
               <div class="container">
+
                 @foreach($viewimages as $img)
                     <div class="col-md-4">
                        <div class="col-md-12">
                         <div class="thumbnail">
-                          <img src="{{url('storage/'.$img->img)}}" alt="JAJA" class="img-rounded" >
+                          <img src="{{url('storage/'.$img->img)}}" alt="{{$img->describe}}" class="img-rounded" >
                           <div class="caption">
-                            <p>{{$img->describe}}</p>
+                            <h3>{{$img->describe}}</h3>
                           </div>
                         </div>
                       </div>

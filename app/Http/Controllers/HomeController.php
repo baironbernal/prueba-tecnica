@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Imagen;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        $viewimages = Imagen::all();
+        $idusuario = Auth::user()->identificacion; 
+        $viewimages = Imagen::where('id_user', $idusuario)->get();
         return view('home', compact("viewimages",$viewimages));
     }
 }
