@@ -18,5 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('saveimage', 'ImageController@guardarImagen')->name('guardaimagen');
+Route::post('image/store', 'ImageController@store')->name('image.store');
+
+
+Route::group(['middleware' =>['role:admin']], function() {
+	
+	
+});
 

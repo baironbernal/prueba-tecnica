@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Imagen;
+
+use App\Image;
 use App\Input;
 use Validator;
 use Storage;
@@ -13,13 +14,37 @@ use Redirect;
 
 class ImageController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
 
-   
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
-    public function guardarImagen(request $request){
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
         //analizar cuantas imagenes ha subido el tipo 
         $id_user = $request->input('id_user');
-        $numImages = Imagen::where('id_user', $id_user)->count();
+        $numImages = Image::where('id_user', $id_user)->count();
         $extpermitidas = array('jpg' =>'jpg' , 'jpeg' =>'jpeg');
         $nameimg = $request->image->getClientOriginalName();
         $img = $request->file('image');
@@ -32,7 +57,7 @@ class ImageController extends Controller
         $validator = Validator::make($request->all(),[
             'id_user' => 'required',
             'image' => 'required|image',
-            'describe' => 'required|max:55',
+            'description' => 'required|max:55',
         ]);
 
         if ($validator->fails()) {
@@ -47,14 +72,56 @@ class ImageController extends Controller
                 $guardar = Imagen::create([
                     'id_user' => $id_user,
                     'img' => $nameimg,
-                    'describe' => $request->input('describe'),
+                    'description' => $request->input('description'),
                 ]);
                 Session::flash('message', 'Carga exitosa');
                 return Redirect::back();
             }
         }
-        
-        
-	}
+    }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }

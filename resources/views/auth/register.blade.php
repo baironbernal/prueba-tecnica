@@ -40,35 +40,35 @@
                         </div>
 
 
-                        <div class="form-group{{ $errors->has('identificacion') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Identificacion</label>
+                        <div class="form-group{{ $errors->has('identification') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">identification</label>
 
                             <div class="col-md-6">
-                                <input id="identificacion" type="text" class="form-control" name="identificacion" value="{{ old('identificacion') }}" required>
+                                <input id="identification" type="text" class="form-control" name="identification" value="{{ old('identification') }}" required>
 
-                                @if ($errors->has('identificacion'))
+                                @if ($errors->has('identification'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('identificacion') }}</strong>
+                                        <strong>{{ $errors->first('identification') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
     
-                        <div class="form-group{{ $errors->has('fecha_nac') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('date_origin') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">Fecha nacimiento</label>
 
                             <div class="col-md-6">
-                                <input id="fecha_nac" type="text" class="form-control" name="fecha_nac" value="{{ old('fecha_nac') }}" required>
+                                <input id="date_origin" type="text" class="form-control" name="date_origin" value="{{ old('date_origin') }}" required>
 
-                                @if ($errors->has('fecha_nac'))
+                                @if ($errors->has('date_origin'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('fecha_nac') }}</strong>
+                                        <strong>{{ $errors->first('date_origin') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                         <div class="form-group{{ $errors->has('fecha_nac') ? ' has-error' : '' }}">
+                         <div class="form-group{{ $errors->has('model_car') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">Modelo del vehiculo</label>
 
                             <div class="col-md-6">

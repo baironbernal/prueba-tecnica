@@ -5,12 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 
-class Imagen extends Model
+class Image extends Model
 {
-    protected $table="imagenes";
+    protected $table="images";
     public $timestamps = false;
 
-    protected $fillable = ['id_user', 'img', 'describe'];
+    protected $fillable = ['id_user', 'img', 'description'];
 
 
     public function user(){

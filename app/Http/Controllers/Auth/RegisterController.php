@@ -51,8 +51,8 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:4|confirmed',
-            'identificacion' => 'required|integer|min:12',
-            'fecha_nac' => 'required|string',
+            'identification' => 'required|integer|min:12',
+            'date_origin' => 'required|string',
             'model_car' => 'required|integer',
         ]);
     }
@@ -69,8 +69,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'identificacion' => $data['identificacion'],
-            'fecha_nac' => $data['fecha_nac'],
+            'identification' => $data['identification'],
+            'date_origin' => $data['date_origin'],
             'model_car' => $data['model_car'],
         ]);
     }

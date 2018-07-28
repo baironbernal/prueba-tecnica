@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('identificacion')->unique()->unsigned();
-            $table->string('fecha_nac');
+            $table->integer('identification')->unique()->unsigned();
+            $table->string('date_origin');
             $table->string('model_car');
             $table->rememberToken();
             $table->timestamps();
