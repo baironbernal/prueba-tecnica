@@ -49,7 +49,7 @@ class ImageController extends Controller
         $nameimg = $request->image->getClientOriginalName();
         $img = $request->file('image');
 
-        if($numImages == 10){
+        if($numImages == 3){
             $cantmax = "No puede subir mas de 10 fotos";
             return back()->withErrors($cantmax);
         }
