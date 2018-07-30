@@ -16,5 +16,6 @@ class PermissionsTableSeeder extends Seeder
         Permission::create(['name' => 'edit_image']);
         Permission::create(['name' => 'store_image']);
         Permission::create(['name' => 'destroy_image']);
+        
     }
 }
