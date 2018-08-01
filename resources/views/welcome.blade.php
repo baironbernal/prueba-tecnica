@@ -13,7 +13,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-color: #aeb6bf;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
@@ -78,9 +78,20 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+               <div class="imgs">
+                   <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-sm-6 col-md-4">
+                            <a href="#" class="thumbnail">
+                              <img src="{{url('img/admin-logo.png')}}" alt="logo-admin">
+                            </a>
+                            <a href="#" class="thumbnail">
+                              <img src="{{url('img/user-logo.jpg')}}" alt="logo-public">
+                            </a>
+                          </div>                    
+                        </div>
+                   </div>
+               </div>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>

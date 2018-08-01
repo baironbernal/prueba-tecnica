@@ -15,11 +15,10 @@ class UsersTableSeeder extends Seeder
        $visitor = User::create([
        	'name' => 'Bairon', 
        	'email' => 'bairon.bernal@inxaitcorp.com', 
-       	'identification' => '1233907408',
+       	'identification' => '1233907409',
+        'password' => env('PASSWORD'),
        	'date_origin' => date('YY-MM-DD'),
        	'model_car' => 'Trailblazer',
-       )];
-
-       
+       ]);
     }
 }

@@ -13,18 +13,31 @@
 
 
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::post('image/store', 'ImageController@store')->name('image.store');
+Route::post('saveimage', 'ImageController@guardarImagen')->name('guardaimagen');
 
-
-Route::group(['middleware' =>['role:admin']], function() {
-	
-	
+Route::get('/', function() {
+	return view('welcome');
 });
 
-Route::post('saveimage', 'ImageController@guardarImagen')->name('guardaimagen');
-Route::get('/', 'FrontPagesController@index');
 
+Route::group(['middleware' => ['role:super-admin']], function () {
+	Route::group(['prefix' => 'users'], function() {
+		Route::post('/store', 'ImageController@store')->name('users.store');	
+		Route::post('/index', 'ImageController@index')->name('users.index');	
+		Route::post('/update/{id}', 'ImageController@update')->name('users.update');	
+		Route::post('/edit/{id}', 'ImageController@edit')->name('users.edit');
+		Route::delete('/delete/', 'ImageController@destroy')->name('users.destroy');		
+	});
+ 	Route::group(['prefix' => 'image'], function() {
+		Route::post('/store', 'ImageController@store')->name('image.store');	
+		Route::post('/index', 'ImageController@index')->name('image.index');	
+		Route::post('/update/{id}', 'ImageController@update')->name('image.update');	
+		Route::post('/edit/{id}', 'ImageController@edit')->name('image.edit');
+		Route::delete('/delete/', 'ImageController@destroy')->name('image.destroy');		
+	});
+});
+
+Auth::routes();

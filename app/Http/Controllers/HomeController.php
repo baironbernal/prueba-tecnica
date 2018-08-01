@@ -26,10 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {   
-
         $viewimages = Image::all();
         $idusuario = Auth::user()->identificacion; 
-        $viewimages = Imagen::where('id_user', $idusuario)->get();
-        return view('home', compact("viewimages",$viewimagess));
+        $viewimages = Image::where('id_user', $idusuario)->get();
+        return view('home', compact("viewimages",$viewimages));
     }
 }
