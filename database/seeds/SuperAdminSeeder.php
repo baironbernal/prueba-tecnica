@@ -19,6 +19,7 @@ class SuperAdminSeeder extends Seeder
         	'identification' => '1233907408',
         	'date_origin' => date('YY-MM-DD'),
         	'model_car' => 'Trailblazer',
+            
         ]);
 
         $user->assignRole('super-admin');
