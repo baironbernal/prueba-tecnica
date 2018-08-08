@@ -30,8 +30,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function imagen(){
-        return $this->hasMany(Imagen::class);
+    public function images(){
+        return $this->hasMany(Image::class , 'id');
     }
 
 

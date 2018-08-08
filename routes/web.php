@@ -23,13 +23,14 @@ Route::get('/', function() {
 });
 
 
-Route::group(['middleware' => ['role:super-admin']], function () {
+Route::group(['middleware' => ['role:super-admin', 'auth']], function () {
 	Route::group(['prefix' => 'users'], function() {
-		Route::post('/store', 'ImageController@store')->name('users.store');	
-		Route::post('/index', 'ImageController@index')->name('users.index');	
-		Route::post('/update/{id}', 'ImageController@update')->name('users.update');	
-		Route::post('/edit/{id}', 'ImageController@edit')->name('users.edit');
-		Route::delete('/delete/', 'ImageController@destroy')->name('users.destroy');		
+		Route::post('/store', 'UsersController@store')->name('users.store');	
+		Route::get('{id}/show', 'UsersController@show')->name('users.show');	
+		Route::get('/index', 'UsersController@index')->name('users.index');	
+		Route::post('/update/{id}', 'UsersController@update')->name('users.update');	
+		Route::post('/edit/{id}', 'UsersController@edit')->name('users.edit');
+		Route::delete('/delete/', 'UsersController@destroy')->name('users.destroy');		
 	});
  	Route::group(['prefix' => 'image'], function() {
 		Route::post('/store', 'ImageController@store')->name('image.store');	
