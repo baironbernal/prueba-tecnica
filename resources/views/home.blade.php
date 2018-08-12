@@ -1,64 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-      <!--Listado de menú -->
-         <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-          <li><a data-toggle="tab" href="#menu1">Mis fotos</a></li>
-          <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-        </ul>
-      <!--visuales -->        
-          <div class="tab-content">
-            <div id="home" class="tab-pane fade in active">
-              <h3>HOME</h3>
-
-              @if(Session::has('message'))
-                <div class="alert alert-success">
-                  <a href="#" class="alert-link">Subido correctamente</a>
-                </div>
-              @endif
-
-              @if($errors)
-                 @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger">
-                    <a href="#" class="alert-link">{{$error}}</a>
-                    </div>
-                @endforeach
-              @endif
-
-
-                            
-              <form action="{{route('guardaimagen')}}" method="POST" enctype="multipart/form-data">
-                  Select image to upload:
-                  <input name="_token" type="hidden" value="{{ csrf_token() }}">
-                  <input type="file" name="image" id="image">
-                  <input type="text" name="describe" id="describe">
-                  <input type="hidden" name="id_user" id="id_user" value="{{Auth::user()->identificacion}}">
-                  <input type="submit" value="Upload Image" name="submit">
-              </form>
-            </div>
-            <div id="menu1" class="tab-pane fade">
-              <div class="container">
-
-                @foreach($viewimages as $img)
-                    <div class="col-md-4">
-                       <div class="col-md-12">
-                        <div class="thumbnail">
-                          <img src="{{url('storage/'.$img->img)}}" alt="{{$img->describe}}" class="img-rounded" >
-                          <div class="caption">
-                            <h3>{{$img->describe}}</h3>
-                          </div>
-                        </div>
-                      </div>
-                      
-                    </div>
-                @endforeach
-              </div>
-            </div>
-          </div>
-           
-    </div>
+<br>
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Subir imagen
+  </a>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+    Ver imagenes
+  </a>
+</p>
+@if(Session::has('message'))
+  <div class="alert alert-success" role="alert">
+  <strong>{{Session::get('message')}}</strong> You successfully read this important alert message.
+</div>
+@endif
+<div class="collapse" id="collapseExample">
+  <div class="card card-block">
+    <form action="{{route('image.store')}}" method="POST" enctype="multipart/form-data">
+      <input name="_token" type="hidden" value="{{ csrf_token() }}">
+        <div class="form-group">
+          <label for="exampleTextarea">Descripcion de la imagen</label>
+          <textarea class="form-control" id="exampleTextarea" rows="3" name="description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputFile">Subir imagen</label>
+          <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="image">
+          <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+        </div>
+        <button type="submit" class="btn btn-primary" name="submit">Enviar imagen</button>
+</form>
+  </div>
+</div>
+<div class="collapse" id="collapseExample2">
+  <div class="card card-block">
+    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+  </div>
 </div>
 @endsection

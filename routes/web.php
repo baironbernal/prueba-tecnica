@@ -16,14 +16,10 @@
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('image/store', 'ImageController@store')->name('image.store');
-Route::post('saveimage', 'ImageController@guardarImagen')->name('guardaimagen');
-
-Route::get('/', function() {
-	return view('welcome');
-});
 
 
-Route::group(['middleware' => ['role:super-admin', 'auth']], function () {
+
+Route::group(['middleware' => ['role:super-admin']], function () {
 	Route::group(['prefix' => 'users'], function() {
 		Route::post('/store', 'UsersController@store')->name('users.store');	
 		Route::get('{id}/show', 'UsersController@show')->name('users.show');	
@@ -33,8 +29,7 @@ Route::group(['middleware' => ['role:super-admin', 'auth']], function () {
 		Route::delete('/delete/', 'UsersController@destroy')->name('users.destroy');		
 	});
  	Route::group(['prefix' => 'image'], function() {
-		Route::post('/store', 'ImageController@store')->name('image.store');	
-		Route::post('/index', 'ImageController@index')->name('image.index');	
+		Route::get('/index', 'ImageController@index')->name('image.index');	
 		Route::post('/update/{id}', 'ImageController@update')->name('image.update');	
 		Route::post('/edit/{id}', 'ImageController@edit')->name('image.edit');
 		Route::delete('/delete/', 'ImageController@destroy')->name('image.destroy');		

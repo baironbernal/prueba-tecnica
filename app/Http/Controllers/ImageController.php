@@ -10,6 +10,7 @@ use File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Session;
+use App\User;
 use Redirect;
 
 class ImageController extends Controller
@@ -21,7 +22,11 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::find(Auth::id());
+
+        if ($user->hasRole('super-admin')) {
+            return "SISASISASAS";
+        }
     }
 
     /**
@@ -42,20 +47,13 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //analizar cuantas imagenes ha subido el tipo 
-        $id_user = $request->input('id_user');
-        $numImages = Image::where('id_user', $id_user)->count();
-        $extpermitidas = array('jpg' =>'jpg' , 'jpeg' =>'jpeg');
-        $nameimg = $request->image->getClientOriginalName();
+
+        $id_user = Auth::id();
+        $identification = User::find($id_user);
+
         $img = $request->file('image');
 
-        if($numImages == 3){
-            $cantmax = "No puede subir mas de 10 fotos";
-            return back()->withErrors($cantmax);
-        }
-
         $validator = Validator::make($request->all(),[
-            'id_user' => 'required',
             'image' => 'required|image',
             'description' => 'required|max:55',
         ]);
@@ -63,21 +61,18 @@ class ImageController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator);
         }
-        else{
-            if (in_array($request->image->getClientOriginalExtension(), $extpermitidas)) {
-            $path = Storage::putFileAs(
-                    'public', $img, $nameimg
-                );
-            //indicamos que queremos guardar un nuevo archivo en el disco local
-                $guardar = Imagen::create([
-                    'id_user' => $id_user,
-                    'img' => $nameimg,
+        else{   
+            $imgName = $img->getClientOriginalName();
+            $path = $img->storeAs('img', $imgName);
+            
+                $storeImage = Image::create([
+                    'id_user' => $identification->identification,
+                    'img' => $imgName,
                     'description' => $request->input('description'),
                 ]);
                 Session::flash('message', 'Carga exitosa');
                 return Redirect::back();
-            }
-        }
+        }   
     }
 
     /**
